@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Report</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles/index.css" />
 </head>
+
 <body>
-    <script src="./src/index.js"></script>
+    <div id="page-wrapper">
+    <header>
+        <h1>WEATHER REPORT</h1>
+    </header>
+
+    <main id="bottom-layout">
+
+        <section class="box" id="city-box">
+            <label for="city-input" id="city-label">City:</label>
+            <input id="city-input" type="text" placeholder="e.g. Seattle" />
+            <button id="choose-place">Reset</button>
+        </section>
+
+        <section class="box" id="landscape-box">
+            <img id="landscape" src="assets/fall.jpg" alt="landscape image" />
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Created by Qiaoqiao/Marina</p>
+    </footer>
+
+    <script src="scr/index.js"></script>
+    </div>
 </body>
+
 </html>
