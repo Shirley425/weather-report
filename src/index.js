@@ -1,18 +1,13 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-const cityInput = document.getElementById("city-input");
-const displayedCityName = document.getElementById("displayed-city-name");
-const resetButton = document.getElementById("choose-place");
+  const cityInput = document.getElementById("city-input");
+  const displayedCityName = document.getElementById("displayed-city-name");
+  const resetButton = document.getElementById("choose-place");
 
-cityInput.addEventListener("input", () => {
-  displayedCityName.textContent = cityInput.value || "Seattle";
-});
-
-resetButton.addEventListener("click", () => {
-  cityInput.value = "";
-  displayedCityName.textContent = "Seattle";
-});
+  cityInput.addEventListener("input", () => {
+    displayedCityName.textContent = cityInput.value || "Seattle";
+  });
 });
 
 // tried to write a dynamic header, didnt finish
