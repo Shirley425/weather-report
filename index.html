@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,9 +12,10 @@
 
 <body>
   <video autoplay muted loop id="bg-video">
-  <source src="assets/Timelaps.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+    <source src="assets/Timelaps.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
   <div id="page-wrapper">
     <header>
       <div id="header-row">
@@ -28,9 +28,9 @@
     </header>
 
     <main id="bottom-layout">
-      <div class="container">
-        <div class="row">
-          <section class="box">
+      <div class="column-left">
+        <section class="box" id="temperature-box">
+          <div class="input-group">
             <h2>Temperature</h2>
             <div class="temperature__content">
               <div class="temperature__controls">
@@ -40,9 +40,11 @@
               </div>
               <button id="temp-now-btn">Temp Now</button>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section class="box">
+        <section class="box" id="sky-box">
+          <div class="input-group">
             <h2>Sky</h2>
             <label for="menu">Weather conditions</label>
             <select id="skySelect">
@@ -57,15 +59,14 @@
             </select>
           </section>
 
-          <section class="box" id="city-box">
-            <label for="city-input" id="city-label">City:</label>
+        <section class="box" id="city-box">
+          <div class="input-group">
+            <h2>CITY:</h2>
             <input id="city-input" type="text" placeholder="e.g. Seattle" />
-            <button id="choose-place">Reset</button>
-          </section>
-        </div>
-      </div>
+            <button id="choose-place">↻</button>
+          </div>
+        </section>
 
-      <div class="row">
         <section class="box" id="landscape-box">
           <img id="landscape" src="assets/50-60_fall.jpg" alt="landscape image" />
         </section>
@@ -75,10 +76,8 @@
     <footer>
       <p>&copy; 2025 Created by Qiaoqiao/Marina</p>
     </footer>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="src/index.js"></script>
   </div>
 </body>
-
 </html>
