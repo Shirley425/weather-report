@@ -34,9 +34,9 @@
             <h2>Temperature</h2>
             <div class="temperature__content">
               <div class="temperature__controls">
-                <span id="increaseTempControl">⬆️</span>
-                <span id="tempValue"></span>
-                <span id="decreaseTempControl">⬇️</span>
+                <button id="increaseTempControl">⬆️</button>
+                <span id="tempValue">65</span>
+                <button id="decreaseTempControl">⬇️</button>
               </div>
               <button id="temp-now-btn">Temp Now</button>
             </div>
@@ -44,7 +44,17 @@
 
           <section class="box">
             <h2>Sky</h2>
-            <select id="skySelect"></select>
+            <label for="menu">Weather conditions</label>
+            <select id="skySelect">
+              <option value="Sunny">Sunny</option>
+              <option value="Cloudy">Cloudy</option>
+              <option value="Windy">Windy</option>
+              <option value="Rainy">Rainy</option>
+              <option value="Fog">Fog</option>
+              <option value="Snow">Snow</option>
+              <option value="Hail">Hail</option>
+              <option value="Tornadoes">Tornadoes</option>
+            </select>
           </section>
 
           <section class="box" id="city-box">
