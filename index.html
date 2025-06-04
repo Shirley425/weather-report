@@ -7,17 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather Report</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/index.css" />
 </head>
 
 <body>
   <div id="page-wrapper">
     <header>
-      <h1>WEATHER REPORT</h1>
+      <div id="header-row">
+        <h1>WEATHER REPORT</h1>
+        <img src="assets/YouAreHere.png" alt="You Are Here Icon" id="you-are-here-icon" />
+        <div id="city-name-wrapper">
+          <span id="displayed-city-name">Seattle</span>
+        </div>
+      </div>
     </header>
 
     <main id="bottom-layout">
@@ -31,7 +34,7 @@
                 <span id="tempValue"></span>
                 <span id="decreaseTempControl">⬇️</span>
               </div>
-              <button2>Temp Now</button>
+              <button id="temp-now-btn">Temp Now</button>
             </div>
           </section>
 
@@ -50,11 +53,7 @@
 
       <div class="row">
         <section class="box" id="landscape-box">
-          <img
-            id="landscape"
-            src="assets/fall.jpg"
-            alt="landscape image"
-          />
+          <img id="landscape" src="assets/50-60_fall.jpg" alt="landscape image" />
         </section>
       </div>
     </main>
@@ -64,7 +63,7 @@
     </footer>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="scr/index.js"></script>
+    <script src="src/index.js"></script>
   </div>
 </body>
 
