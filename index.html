@@ -32,13 +32,13 @@
         <section class="box" id="temperature-box">
           <div class="input-group">
             <h2>Temperature</h2>
-            <button id="temp-now-btn">Temp</button>
-          </div>
-          <div class="temperature__content">
-            <div class="temperature__controls">
-              <span id="increaseTempControl">⬆️</span>
-              <span id="tempValue"></span>
-              <span id="decreaseTempControl">⬇️</span>
+            <div class="temperature__content">
+              <div class="temperature__controls">
+                <button id="increaseTempControl">⬆️</button>
+                <span id="tempValue">65</span>
+                <button id="decreaseTempControl">⬇️</button>
+              </div>
+              <button id="temp-now-btn">Click Me</button>
             </div>
           </div>
         </section>
@@ -46,9 +46,14 @@
         <section class="box" id="sky-box">
           <div class="input-group">
             <h2>Sky</h2>
-            <select id="skySelect"></select>
-          </div>
-        </section>
+            <label for="menu">Weather conditions</label>
+            <select id="skySelect">
+              <option value="Sunny">Sunny</option>
+              <option value="Cloudy">Cloudy</option>
+              <option value="Rainy">Rainy</option>
+              <option value="Snow">Snow</option>
+            </select>
+          </section>
 
         <section class="box" id="city-box">
           <div class="input-group">
