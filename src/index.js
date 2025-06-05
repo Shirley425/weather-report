@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     displayedCityName.textContent = "Seattle";
   });
 });
-<<<<<<< HEAD
-
 
 const state = {
   tempValue: 65,
@@ -85,5 +83,3 @@ axios
 //   .catch(() => {
 //     console.log('error!');
 //   });
-=======
->>>>>>> cb0aab3341dce052a3ee2b1f4d4ec8273693b551
