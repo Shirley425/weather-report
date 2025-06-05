@@ -174,24 +174,24 @@ label{
 }
 
 #increaseTempControl {
-  background-color: #ffffff;
+  background-color: #e2e2e2c8;
   color: white;
   font-size: 15px;
   cursor: pointer;
   font-size: 1.2rem;
-  width: 15%;
+  width: 9%;
   height: 10%;
   border: 2px solid #ccc;
   border-radius: 10%;
 }
 
 #decreaseTempControl {
-  background-color: #ffffff;
+  background-color: #e2e2e2c8;
   color: white;
   font-size: 15px;
   cursor: pointer;
   font-size: 1.2rem;
-  width: 15%;
+  width: 9%;
   height: 10%;
   border: 2px solid #ccc;
   border-radius: 10%;
