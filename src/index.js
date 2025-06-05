@@ -10,50 +10,72 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// tried to write a dynamic header, didnt finish
-// const header = document.getElementById("rotating-header");
-// const languages = [
-//   "Weather Report",
-//   "天气预报",           // Chinese
-//   "Informe del Clima", // Spanish
-//   "Прогноз погоды",     // Russian
-//   "मौसम की रिपोर्ट",     // Hindi
-// ];
 
-// let langIndex = 0;
+const state = {
+  tempValue: 65,
+};
 
-// setInterval(() => {
-// langIndex = (langIndex + 1) % languages.length;
-// header.textContent = languages[langIndex];
-// }, 3000); 
-
-
-document.getElementById('setTempBtn').addEventListener('click', () => {
-  const input = document.getElementById('tempInput');
-  const temp = parseFloat(input.value);
-  const display = document.getElementById('temperature-display');
-
-  if (isNaN(temp)) {
-    display.textContent = '--';
-    display.className = 'temperature';
-    return;
-  }
-
-  display.textContent = `${temp}°`;
-
-  display.className = 'temperature';
+const updateTempValue = () => {
+  const tempValue = document.getElementById('tempValue');
+  const temp = state.tempValue;
+  tempValue.textContent = temp;
+  tempValue.className = '';
 
   if (temp < 32) {
-    display.classList.add('temp-cold');
+    tempValue.classList.add('temp-cold');
   } else if (temp < 45) {
-    display.classList.add('temp-cool');
+    tempValue.classList.add('temp-cool');
   } else if (temp < 72) {
-    display.classList.add('temp-mild');
+    tempValue.classList.add('temp-mild');
   } else if (temp < 85) {
-    display.classList.add('temp-warm');
+    tempValue.classList.add('temp-warm');
   } else if (temp <= 100) {
-    display.classList.add('temp-hot');
+    tempValue.classList.add('temp-hot');
   } else {
-    display.classList.add('temp-extreme');
+    tempValue.classList.add('temp-extreme');
   }
+};
+
+const increseTemp = (event) => {
+  state.tempValue +=1;
+  updateTempValue();
+};
+
+const decreseTemp = (event) => {
+  state.tempValue -=1;
+  updateTempValue();
+};
+
+const registerEventHandlers = (event) => {
+  const increseButton = document.querySelector('#increaseTempControl')
+  increseButton.addEventListener('click', increseTemp)
+
+  const decreseButton = document.querySelector('#decreaseTempControl')
+  decreseButton.addEventListener('click', decreseTemp)
+
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  registerEventHandlers();
+  updateTempValue();
 });
+
+const axios = require('axios');
+
+axios
+  .get('https://us1.locationiq.com/v1/search.php')
+  .then((response) => {
+    console.log('The value of response is:', response);
+  })
+  .catch((error) => {
+    console.log('The value of error is:', error);
+  });
+
+// axios
+//   .get('https://api.openweathermap.org/data/2.5/weather')
+//   .then(() => {
+//     console.log('success!');
+//   })
+//   .catch(() => {
+//     console.log('error!');
+//   });

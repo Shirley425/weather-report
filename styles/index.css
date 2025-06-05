@@ -105,7 +105,7 @@ button {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #f80905;
+  background-color: #9c54df;
   border: 2px solid #878785;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -139,8 +139,12 @@ button:hover {
 footer {
   height: 1.5cm;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #fdfbfb;
+  background-color: #0d9ca1;
+  margin-top: auto;
 }
 
 .row {
@@ -207,19 +211,19 @@ label{
 }
 
 .temp-cold {
-  color: #1e90ff;
+  color: #1eb0ff;
 }
 .temp-cool {
-  color: #2ecc71;
+  color: #2ecc43;
 }
 .temp-mild {
-  color: #f1c40f;
+  color: #d9aa00;
 }
 .temp-warm {
-  color: #e67e22;
+  color: #ffa238;
 }
 .temp-hot {
-  color: #e74c3c;
+  color: #ff1900;
 }
 .temp-extreme {
   color: #8b0000;
