@@ -124,9 +124,12 @@ button:hover {
 }
 
 #city-input {
-  flex-grow: 0.7;
-  margin-right: 0.5rem;
-  padding: 0.2rem;
+  flex-grow: 1;
+  min-width: 0;
+  padding: 0.4rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 #landscape {
@@ -145,4 +148,25 @@ footer {
   color: #fdfbfb;
   background-color: #0d9ca1;
   margin-top: auto;
+}
+
+.city-input-group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.city-input-group label {
+  flex-shrink: 0;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #0d9ca1;
+}
+
+#choose-place {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
 }
