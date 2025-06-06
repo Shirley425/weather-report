@@ -77,7 +77,7 @@ const updateWeatherBackground = () => {
   });
 };
 
-const increaseTemp = () => {
+  const increaseTemp = () => {
   state.tempValue +=1;
   updateTempValue();
 };
