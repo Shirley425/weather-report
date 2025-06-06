@@ -21,65 +21,69 @@ const state = {
 
 const updateTempValue = () => {
   const tempValue = document.getElementById('tempValue');
+  const img = document.getElementById('landscape')
   const temp = state.tempValue;
   tempValue.textContent = temp;
   tempValue.className = '';
 
   if (temp < 32) {
     tempValue.classList.add('temp-cold');
+    img.src = 'assets/below32.jpg';
   } else if (temp < 45) {
     tempValue.classList.add('temp-cool');
+    img.src = 'assets/32-45.jpg';
   } else if (temp < 72) {
     tempValue.classList.add('temp-mild');
+    img.src = 'assets/45-72.jpg';
   } else if (temp < 85) {
     tempValue.classList.add('temp-warm');
+    img.src = 'assets/72-85.jpg';
   } else if (temp <= 100) {
     tempValue.classList.add('temp-hot');
+    img.src = 'assets/85-100.jpg';
   } else {
     tempValue.classList.add('temp-extreme');
+    img.src = 'assets/above100.jpg';
   }
 };
 
-const increseTemp = (event) => {
+const updateWeatherEmoji = () => {
+  const skySelect = document.getElementById('skySelect');
+  const weatherEmoji = document.getElementById('weatherEmoji');
+  const weather = skySelect.value;
+
+  const emojiMap = {
+    Sunny: '☀️🌈☀️☀️🌈☀️☀️🌈☀️☀️🌈☀️☀️🌈☀️',
+    Cloudy: '☁️⛅☁️☁️⛅☁️☁️⛅☁️☁️⛅☁️☁️⛅☁️',
+    Rainy: '🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️',
+    Snowy: '❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️',
+    Windy: '🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️',
+    Foggy: '🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️'
+  };
+
+  weatherEmoji.textContent = emojiMap[weather];
+};
+
+const increaseTemp = () => {
   state.tempValue +=1;
   updateTempValue();
 };
 
-const decreseTemp = (event) => {
+const decreaseTemp = () => {
   state.tempValue -=1;
   updateTempValue();
 };
 
-const registerEventHandlers = (event) => {
-  const increseButton = document.querySelector('#increaseTempControl')
-  increseButton.addEventListener('click', increseTemp)
-
-  const decreseButton = document.querySelector('#decreaseTempControl')
-  decreseButton.addEventListener('click', decreseTemp)
-
+const registerEventHandlers = () => {
+  document.getElementById('increaseTempControl').addEventListener('click', increaseTemp);
+  document.getElementById('decreaseTempControl').addEventListener('click', decreaseTemp);
+  document.getElementById('skySelect').addEventListener('change', updateWeatherEmoji);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   registerEventHandlers();
   updateTempValue();
+  updateWeatherEmoji();
 });
 
-const axios = require('axios');
 
-axios
-  .get('https://us1.locationiq.com/v1/search.php')
-  .then((response) => {
-    console.log('The value of response is:', response);
-  })
-  .catch((error) => {
-    console.log('The value of error is:', error);
-  });
-
-// axios
-//   .get('https://api.openweathermap.org/data/2.5/weather')
-//   .then(() => {
-//     console.log('success!');
-//   })
-//   .catch(() => {
-//     console.log('error!');
-//   });

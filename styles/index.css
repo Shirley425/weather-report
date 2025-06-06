@@ -301,3 +301,13 @@ label{
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin: 15px
 }
+
+#skySelect {
+  font-size: 1.2rem;
+}
+
+#weatherEmoji {
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 1.2;
+}
