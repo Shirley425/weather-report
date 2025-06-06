@@ -47,21 +47,34 @@ const updateTempValue = () => {
   }
 };
 
-const updateWeatherEmoji = () => {
+const updateWeatherBackground = () => {
   const skySelect = document.getElementById('skySelect');
-  const weatherEmoji = document.getElementById('weatherEmoji');
   const weather = skySelect.value;
 
-  const emojiMap = {
-    Sunny: '☀️🌈☀️☀️🌈☀️☀️🌈☀️☀️🌈☀️☀️🌈☀️',
-    Cloudy: '☁️⛅☁️☁️⛅☁️☁️⛅☁️☁️⛅☁️☁️⛅☁️',
-    Rainy: '🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️',
-    Snowy: '❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️',
-    Windy: '🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️',
-    Foggy: '🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️'
+  const skyClassMap = {
+    Sunny: 'sky-sunny',
+    Cloudy: 'sky-cloudy',
+    Rainy: 'sky-rainy',
+    Snowy: 'sky-snowy',
+    Windy: 'sky-windy',
+    Foggy: 'sky-foggy'
   };
 
-  weatherEmoji.textContent = emojiMap[weather];
+  const newClass = skyClassMap[weather];
+
+  const allBoxes = document.querySelectorAll('.box');
+
+  allBoxes.forEach((box) => {
+    box.classList.remove(
+      'sky-sunny',
+      'sky-cloudy',
+      'sky-rainy',
+      'sky-snowy',
+      'sky-windy',
+      'sky-foggy'
+    );
+    box.classList.add(newClass);
+  });
 };
 
 const increaseTemp = () => {
@@ -77,13 +90,31 @@ const decreaseTemp = () => {
 const registerEventHandlers = () => {
   document.getElementById('increaseTempControl').addEventListener('click', increaseTemp);
   document.getElementById('decreaseTempControl').addEventListener('click', decreaseTemp);
-  document.getElementById('skySelect').addEventListener('change', updateWeatherEmoji);
+  document.getElementById('skySelect').addEventListener('change', updateWeatherBackground);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   registerEventHandlers();
   updateTempValue();
-  updateWeatherEmoji();
+  updateWeatherBackground();
 });
 
 
+
+
+// const updateWeatherEmoji = () => {
+//   const skySelect = document.getElementById('skySelect');
+//   const weatherEmoji = document.getElementById('weatherEmoji');
+//   const weather = skySelect.value;
+
+//   const emojiMap = {
+//     Sunny: '☀️🌈☀️☀️🌈☀️☀️🌈☀️☀️🌈☀️☀️🌈☀️',
+//     Cloudy: '☁️⛅☁️☁️⛅☁️☁️⛅☁️☁️⛅☁️☁️⛅☁️',
+//     Rainy: '🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️🌧️🌦️🌧️',
+//     Snowy: '❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️❄️🌨️❄️',
+//     Windy: '🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️🌬️🍃🌬️',
+//     Foggy: '🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️🌫️🌁🌫️'
+//   };
+
+//   weatherEmoji.textContent = emojiMap[weather];
+// };
