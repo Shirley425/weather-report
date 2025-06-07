@@ -61,17 +61,9 @@ const getSkyEmojis = (sky) => {
 // Main Functions
 const updateTemperature = () => {
   tempValue.textContent = `${temperature}°C`;
-  updateColorTemp(temperature);
-  updateWeatherGarden(temperature);
-};
-
-const updateColorTemp = (temp) => {
   tempValue.className = '';
-  tempValue.classList.add(getTempColor(temp));
-};
-
-const updateWeatherGarden = (temp) => {
-  landscape.textContent = getLandscape(temp);
+  tempValue.classList.add(getTempColor(temperature));
+  landscape.textContent = getLandscape(temperature);
 };
 
 const updateSky = () => {
@@ -100,17 +92,10 @@ cityNameInput.addEventListener('input', () => {
 });
 
 cityNameReset.addEventListener('click', () => {
-  console.log("RESET CLICKED");
-
-  cityNameInput.value = "Seattle";
-  headerCityName.textContent = "Seattle";
-
+  resetCityName();
   temperature = 14;
-  console.log("temp:", temperature);
-  updateTemperature();
-
   skySelect.value = "Rainy";
-  console.log("sky:", skySelect.value);
+  updateTemperature();
   updateSky();
 });
 
@@ -138,10 +123,7 @@ currentTempButton.addEventListener('click', () => {
 
 
 // Initial Render
-temperature = 14;
-cityNameInput.value = "Seattle";
-headerCityName.textContent = "Seattle";
+resetCityName();
 skySelect.value = "Rainy";
-
 updateTemperature();
 updateSky();
