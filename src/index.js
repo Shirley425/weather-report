@@ -1,128 +1,147 @@
+// Wave 1
+// HTML, partually CSS
+
+// Wave 2
+// Temperature Ranges, Landscape Changes
+
+// Wave 3
+// City Changes
+
+// Wave 4
+// Calling API
+// Proxy Server: LocationIQ, Openweather there - checked, works!
+
+// Wave 5
+// Sky changes
+
+
 "use strict";
 
-let temperature = 20;
+// Global variables
+
+let temperature = 14;
 
 const increaseButton = document.getElementById('increaseTempControl');
 const decreaseButton = document.getElementById('decreaseTempControl');
 const cityNameInput = document.getElementById('cityNameInput');
-const displayedCityName = document.getElementById('displayedCityName');
+const cityNameReset = document.getElementById('cityNameReset');
+const headerCityName = document.getElementById('headerCityName');
+const tempValue =  document.getElementById('tempValue');
+const landscape = document.getElementById('landscape');
+const skySelect = document.getElementById('skySelect');
+const sky = document.getElementById('sky');
+const currentTempButton = document.getElementById('currentTempButton');
 
-// Wave 1
-// HTML, partually CSS
+
+// Helper Functions
+const getTempColor = (temp) => {
+  if (temp >= 27) return 'red';
+  if (temp >= 21) return 'orange';
+  if (temp >= 15) return 'yellow';
+  if (temp >= 10) return 'green';
+  return 'teal';
+};
+
+const getLandscape = (temp) => {
+  if (temp >= 27) return "🌵🌵 🌵🌵 🌵🌵";
+  if (temp >= 21) return "🌸🌼 🌸🌼 🌸🌼";
+  if (temp >= 15) return "🌿🌿 🌿🌿 🌿🌿";
+  if (temp >= 10) return "🌲🌲 🌲🌲 🌲🌲";
+  return "❄️❄️ ❄️❄️ ❄️❄️";
+};
+
+const getSkyEmojis = (sky) => {
+  if (sky === "Sunny") return "☀️☀️ ☀️☀️ ☀️☀️";
+  if (sky === "Cloudy") return "☁️☁️ ☁️☁️ ☁️☁️";
+  if (sky === "Rainy") return "💧💧 💧💧 💧💧";
+  return "❄️❄️ ❄️❄️ ❄️❄️";
+};
 
 
-// Wave 2
-// Temperature Ranges, Landscape Changes
+// Main Functions
 const updateTemperature = () => {
   tempValue.textContent = `${temperature}°C`;
   updateColorTemp(temperature);
   updateWeatherGarden(temperature);
 };
 
-const updateColorTemp = (temperature) => {
-
-    tempValue.className = '';
-
-  if (temperature >= 27) {
-    tempValue.classList.add('red');
-  } else if (temperature >= 21) {
-    tempValue.classList.add('orange');
-  } else if (temperature >= 15) {
-    tempValue.classList.add('yellow');
-  } else if (temperature >= 10) {
-    tempValue.classList.add('green');
-  } else {
-    tempValue.classList.add('teal');
-  }
+const updateColorTemp = (temp) => {
+  tempValue.className = '';
+  tempValue.classList.add(getTempColor(temp));
 };
 
-increaseButton.addEventListener ('click', () => {
-    temperature += 1;
-    updateTemprature();
-});
-decreaseButton.addEventListener('click', () => {
-    temperature -= 1;
-    updateTemperature();
-});
-
-updateTemprature();
-
-
-// Wave 3
-// City Changes
-cityNameInput.addEventListener ('input', () =>{
-    headerCityName.textContent = cityNameInput.value;
-});
-cityNameReset.addEventListener ('click', () => { 
-    cityNameInput.value = "Seattle";
-    headerCityName.textContent = cityNameInput.value;
-});
-
-cityNameInput.value = "Seattle";
-headerCityName.textContent = cityNameInput.value;
-
-// Wave 4
-// Calling API
-// Proxy Server: LocationIQ, Openweather there - checked, works!
-currentTempButton.addEventListener('click', () => {
-    axios.get('http://127.0.0.1:5000/location',{
-        params: {q: cityNameInput.value}
-    })
-    .then ((response) => {
-        const {lat, lon} = response.data[0];
-        return axios.get('http://127.0.0.1:5000/weather',{
-            params: {lat, lon}
-        });
-    })
-    .then ((response_weather) => {
-        // console.log(response_weather);
-        const kelvinTemperature = response_weather.data.main.temp;
-        // Celsius = Kelvin - 273.15
-        temperature = Math.round(kelvinTemperature - 273.15);
-        updateTemprature();
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-});
-
-
-// Wave 5
-// Sky changes
-const updateWeatherGarden = (temperature) => {
-  if (temperature >= 27) {
-    landscape.textContent = "🌵🌵 🌵🌵 🌵🌵";
-  } else if (temperature >= 21) {
-    landscape.textContent = "🌸🌼 🌸🌼 🌸🌼";
-  } else if (temperature >= 15) {
-    landscape.textContent = "🌿🌿 🌿🌿 🌿🌿";
-  } else if (temperature >= 10) {
-    landscape.textContent = "🌲🌲 🌲🌲 🌲🌲";
-  } else {
-    landscape.textContent = "❄️❄️ ❄️❄️ ❄️❄️";
-  }
+const updateWeatherGarden = (temp) => {
+  landscape.textContent = getLandscape(temp);
 };
 
 const updateSky = () => {
-    if (skySelect.value === "Sunny"){
-        sky.textContent = "☀️☀️ ☀️☀️ ☀️☀️";
-    } else if (skySelect.value === "Cloudy"){
-        sky.textContent = "☁️☁️ ☁️☁️ ☁️☁️";
-    } else if (skySelect.value === "Rainy"){
-        sky.textContent = "💧💧 💧💧 💧💧";
-    } else {
-        sky.textContent = "❄️❄️ ❄️❄️ ❄️❄️";
-    }
+  sky.textContent = getSkyEmojis(skySelect.value);
 };
 
-skySelect.addEventListener ('change', updateSky);
-updateSky();
+const resetCityName = () => {
+  cityNameInput.value = "Seattle";
+  headerCityName.textContent = "Seattle";
+};
 
-// Wave 6
-// Reset City
-cityNameReset.addEventListener ('click', () => { 
-    cityNameInput.value = "Seattle";
-    headerCityName.textContent = cityNameInput.value;
+
+// Event Listeners
+increaseButton.addEventListener('click', () => {
+  temperature += 1;
+  updateTemperature();
+});
+
+decreaseButton.addEventListener('click', () => {
+  temperature -= 1;
+  updateTemperature();
+});
+
+cityNameInput.addEventListener('input', () => {
+  headerCityName.textContent = cityNameInput.value;
+});
+
+cityNameReset.addEventListener('click', () => {
+  console.log("RESET CLICKED");
+
+  cityNameInput.value = "Seattle";
+  headerCityName.textContent = "Seattle";
+
+  temperature = 14;
+  console.log("temp:", temperature);
+  updateTemperature();
+
+  skySelect.value = "Rainy";
+  console.log("sky:", skySelect.value);
+  updateSky();
+});
+
+skySelect.addEventListener('change', updateSky);
+
+currentTempButton.addEventListener('click', () => {
+  axios.get('http://127.0.0.1:5000/location', {
+    params: { q: cityNameInput.value }
+  })
+    .then((response) => {
+      const { lat, lon } = response.data[0];
+      return axios.get('http://127.0.0.1:5000/weather', {
+        params: { lat, lon }
+      });
+    })
+    .then((response_weather) => {
+      const kelvinTemperature = response_weather.data.main.temp;
+      temperature = Math.round(kelvinTemperature - 273.15);
+      updateTemperature();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 
+// Initial Render
+temperature = 14;
+cityNameInput.value = "Seattle";
+headerCityName.textContent = "Seattle";
+skySelect.value = "Rainy";
+
+updateTemperature();
+updateSky();
