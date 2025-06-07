@@ -36,8 +36,25 @@ const updateColorTemp = (temperature) => {
   }
 };
 
+increaseButton.addEventListener ('click', () => {
+    temperature += 1;
+    updateTemprature();
+});
+decreaseButton.addEventListener('click', () => {
+    temperature -= 1;
+    updateTemperature();
+});
+
+
 // Wave 3
 // City Changes
+cityNameInput.addEventListener ('input', () =>{
+    headerCityName.textContent = cityNameInput.value;
+});
+cityNameReset.addEventListener ('click', () => { 
+    cityNameInput.value = "Seattle";
+    headerCityName.textContent = cityNameInput.value;
+});
 
 
 // Wave 4
@@ -45,11 +62,5 @@ const updateColorTemp = (temperature) => {
 // Proxy Server
 
 
-increaseButton.addEventListener ('click', () => {
-    temperature += 1;
-    updateTemprature();
-});
-decreaseButton.addEventListener('click', () => {
-    temperature -= 1;
-    updateTemprature();
-});
+
+
