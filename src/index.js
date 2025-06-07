@@ -58,8 +58,29 @@ cityNameReset.addEventListener ('click', () => {
 
 
 // Wave 4
-// Calling API, LocationIQ, Openweather
-// Proxy Server
+// Calling API
+// Proxy Server: LocationIQ, Openweather there - checked, works!
+currentTempButton.addEventListener('click', () => {
+    axios.get('http://127.0.0.1:5000/location',{
+        params: {q: cityNameInput.value}
+    })
+    .then ((response) => {
+        const {lat, lon} = response.data[0];
+        return axios.get('http://127.0.0.1:5000/weather',{
+            params: {lat, lon}
+        });
+    })
+    .then ((response_weather) => {
+        // console.log(response_weather);
+        const kelvinTemperature = response_weather.data.main.temp;
+        // Celsius = Kelvin - 273.15
+        temperature = Math.round(kelvinTemperature - 273.15);
+        updateTemprature();
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
 
 
 
