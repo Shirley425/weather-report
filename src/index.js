@@ -45,6 +45,8 @@ decreaseButton.addEventListener('click', () => {
     updateTemperature();
 });
 
+updateTemprature();
+
 
 // Wave 3
 // City Changes
@@ -56,6 +58,8 @@ cityNameReset.addEventListener ('click', () => {
     headerCityName.textContent = cityNameInput.value;
 });
 
+cityNameInput.value = "Seattle";
+headerCityName.textContent = cityNameInput.value;
 
 // Wave 4
 // Calling API
@@ -83,5 +87,42 @@ currentTempButton.addEventListener('click', () => {
 });
 
 
+// Wave 5
+// Sky changes
+const updateWeatherGarden = (temperature) => {
+  if (temperature >= 27) {
+    landscape.textContent = "🌵🌵 🌵🌵 🌵🌵";
+  } else if (temperature >= 21) {
+    landscape.textContent = "🌸🌼 🌸🌼 🌸🌼";
+  } else if (temperature >= 15) {
+    landscape.textContent = "🌿🌿 🌿🌿 🌿🌿";
+  } else if (temperature >= 10) {
+    landscape.textContent = "🌲🌲 🌲🌲 🌲🌲";
+  } else {
+    landscape.textContent = "❄️❄️ ❄️❄️ ❄️❄️";
+  }
+};
+
+const updateSky = () => {
+    if (skySelect.value === "Sunny"){
+        sky.textContent = "☀️☀️ ☀️☀️ ☀️☀️";
+    } else if (skySelect.value === "Cloudy"){
+        sky.textContent = "☁️☁️ ☁️☁️ ☁️☁️";
+    } else if (skySelect.value === "Rainy"){
+        sky.textContent = "💧💧 💧💧 💧💧";
+    } else {
+        sky.textContent = "❄️❄️ ❄️❄️ ❄️❄️";
+    }
+};
+
+skySelect.addEventListener ('change', updateSky);
+updateSky();
+
+// Wave 6
+// Reset City
+cityNameReset.addEventListener ('click', () => { 
+    cityNameInput.value = "Seattle";
+    headerCityName.textContent = cityNameInput.value;
+});
 
 
