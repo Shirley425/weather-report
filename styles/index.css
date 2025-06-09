@@ -266,7 +266,7 @@ button.arrow:hover {
   height: 180px;
   object-fit: cover;
   border-radius: 8px;
-  opacity: 0.5;
+  opacity: 0.9;
   display: block;
   margin: 0 auto;
 }
@@ -306,4 +306,8 @@ footer {
   color: #fdfbfb;
   background-color: #0d9ca1;
   margin-top: auto;
+}
+
+#weatherEmoji{
+  font-size: 1.48rem;
 }
