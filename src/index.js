@@ -126,7 +126,7 @@ const registerEventHandlers = () => {
       })
       .then((response_weather) => {
         const kelvinTemperature = response_weather.data.main.temp;
-        state.tempValue = Math.round(kelvinTemperature - 273.15);
+        state.tempValue = Math.round((kelvinTemperature - 273.15) * 9/5 + 32);
         updateTempValue();
       })
       .catch((error) => {
