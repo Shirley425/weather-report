@@ -135,10 +135,12 @@ const registerEventHandlers = () => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  registerEventHandlers();
+const onLoaded = () => {
+registerEventHandlers();
   updateTempValue();
   updateWeatherBackground();
   updateWeatherEmoji();
   updateCityName();
-});
+};
+
+document.addEventListener('DOMContentLoaded', onLoaded);
